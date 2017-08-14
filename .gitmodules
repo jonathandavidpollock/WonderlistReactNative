@@ -1,0 +1,3 @@
+[submodule "source/redux"]
+	path = source/redux
+	url = https://github.com/jonathandavidpollock/CoreModules
