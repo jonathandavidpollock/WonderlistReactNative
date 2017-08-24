@@ -2,6 +2,9 @@ import React from 'react'
 import {StackNavigator} from 'react-navigation'
 import Main from '../components/main'
 import {connect} from 'react-redux'
+import { logout } from '../redux/actions/auth';
+import * as ActionCreators from '../redux/actions/auth'
+import bindActionCreators from 'redux'
 
 
 export const Router = StackNavigator({
