@@ -34,8 +34,7 @@ class Login extends Component {
                         />
                     
                     <View style={styles.logoContainer}>
-                        <Image source={Logo} style={styles.logo}/>
-                        <Text style={styles.title}>Our mission is to make disciples</Text>
+                        <Text style={styles.title}>Wonderlist</Text>
                     </View>
                     <TextInput 
                         placeholder="email" 
@@ -87,7 +86,7 @@ const mapDispatchToProps = (dispatch) => {
 const styles = StyleSheet.create({
     container: {
         padding: 20,
-        backgroundColor: '#222222',
+        backgroundColor: '#29BB9C',
         flex:1
     },
     input : {
@@ -102,7 +101,7 @@ const styles = StyleSheet.create({
         borderColor:'rgba(236,167,44,.9)',
     },
     buttonContainer: {
-        backgroundColor:'#41873f',
+        backgroundColor:'#E8D6CC',
         paddingVertical: 10,
         marginBottom: 20
     },
@@ -123,9 +122,13 @@ const styles = StyleSheet.create({
     title:{
         color:"#ffffff",
         marginTop:10,
-        width:160,
         textAlign:'center',
-        opacity:0.9
+        opacity:0.9,
+        fontFamily: 'American Typewriter',
+        fontWeight:'bold',
+        fontSize:50,
+        color:'#111',
+        color:'#E8D6CB',
     },
     text: {
         textAlign:'center',
