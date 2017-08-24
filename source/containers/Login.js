@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Text, TextInput, Image, TouchableOpacity, View, Button,KeyboardAvoidingView, StatusBar, StyleSheet } from 'react-native';
+import { ScrollView, Text, TextInput, TouchableOpacity, View, Button, KeyboardAvoidingView, StatusBar, StyleSheet, Image } from 'react-native';
 import { login } from '../redux/actions/auth';
 import Logo from '../img/DClogo.png'
  
@@ -10,19 +10,13 @@ class Login extends Component {
         this.state = {
             route: 'Login',
             username: '',
-            password: '',
-            placeholderUsername:'username',
-            placeholderPassword: 'password',
+            password: ''
         };
     }
  
     userLogin (e) {
+        this.props.onLogin(this.state.username, this.state.password);
         e.preventDefault();
-        if(this.state.username != undefined || this.state.password != undefined) {
-            this.props.onLogin(this.state.username, this.state.password);         
-        } else {
-            this.addError.bind(this)
-        }
     }
  
     toggleRoute (e) {
@@ -30,19 +24,11 @@ class Login extends Component {
         this.setState({ route: alt });
         e.preventDefault();
     }
-
-    addError() {
-        this.setState = {
-            ...this.state,
-            placeholderUsername:'⚠️ email',
-            placedholderPassword:'⚠️ password'
-        }
-    }
  
     render () {
         let alt = (this.state.route === 'Login') ? 'SignUp' : 'Login';
         return (
-                <KeyboardAvoidingView behavior="padding" keyboardVerticalOffset={480} style={styles.container}>
+            <KeyboardAvoidingView behavior="padding" keyboardVerticalOffset={480} style={styles.container}>
                     <StatusBar
                         barStyle="light-content"
                         />
@@ -84,6 +70,19 @@ class Login extends Component {
     }
 }
  
+ 
+const mapStateToProps = (state, ownProps) => {
+    return {
+        isLoggedIn: state.auth.isLoggedIn
+    };
+}
+ 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onLogin: (username, password) => { dispatch(login(username, password)); },
+        onSignUp: (username, password) => { dispatch(signup(username, password)); }
+    }
+}
 
 const styles = StyleSheet.create({
     container: {
@@ -136,18 +135,5 @@ const styles = StyleSheet.create({
         marginBottom:20
     }
 })
- 
-const mapStateToProps = (state, ownProps) => {
-    return {
-        isLoggedIn: state.auth.isLoggedIn
-    };
-}
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        onLogin: (username, password) => { dispatch(login(username, password)); },
-        onSignUp: (username, password) => { dispatch(signup(username, password)); }
-    }
-}
  
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

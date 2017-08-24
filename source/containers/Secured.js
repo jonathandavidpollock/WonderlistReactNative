@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Text, View, Button } from 'react-native';
+import { ScrollView, Text, View, Button } from 'react-native';
 import { logout } from '../redux/actions/auth';
-import Router from '../config/router'
  
 class Secured extends Component {
     userLogout(e) {
@@ -12,11 +11,17 @@ class Secured extends Component {
      
     render() {
         return (
-            <Router />
+            <ScrollView style={{padding: 20}}>
+                <Text style={{fontSize: 27}}>
+                    {`Welcome ${this.props.username}`}
+                </Text>
+                <View style={{margin: 20}}/>
+                <Button onPress={(e) => this.userLogout(e)} title="Logout"/>
+            </ScrollView>
         );
     }
 }
-
+ 
  
 const mapStateToProps = (state, ownProps) => {
     return {
