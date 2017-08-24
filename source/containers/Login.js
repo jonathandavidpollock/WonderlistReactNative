@@ -96,8 +96,6 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         color:"#ffffff",
         paddingHorizontal: 20,
-        borderWidth:2,
-        borderColor:'rgba(236,167,44,.9)',
     },
     error : {
         borderWidth:2,

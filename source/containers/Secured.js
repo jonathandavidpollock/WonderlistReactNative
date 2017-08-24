@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { View, Text, Button,StyleSheet, Image } from 'react-native';
 import { logout } from '../redux/actions/auth';
 import avatar from '../img/avatar.png'
+import Main from '../components/main'
  
 class Secured extends Component {
     userLogout(e) {
@@ -12,15 +13,7 @@ class Secured extends Component {
      
     render() {
         return (
-            <View style={styles.container}>
-                <Text style={styles.welcome}>
-                    {`Welcome, ${this.props.username}`}
-                </Text>
-                <View style={styles.imgWrapper}>
-                    <Image source={avatar} style={styles.avatar}/>
-                </View>
-                <Button onPress={(e) => this.userLogout(e)} title="Logout"/>
-            </View>
+            <Main />
         );
     }
 }
