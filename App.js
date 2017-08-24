@@ -1,11 +1,15 @@
-import React, { Component} from 'react';
-import { StyleSheet, Text, View, TouchableHighlight, NavigatorIOS, TouchableOpacity, StatusBar} from 'react-native'
-import { Provider } from 'redux'
-import Main from './source/components/main'
-export default class App extends Component {
+import React, { Component } from 'react';
+import { Provider } from 'react-redux';
+import Application from './source/containers/Application';
+import store from './source/redux/store';
+ 
+export default class DiscoveryChurchApplication extends Component {
   render() {
     return (
-        <Main/>
+      <Provider store={store}>
+        <Application />
+      </Provider>
     );
   }
 }
+ 
